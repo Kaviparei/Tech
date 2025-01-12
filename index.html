@@ -205,43 +205,13 @@ ul {
         <p>&copy; 2025 MySite. All rights reserved.</p>
     </footer>
 
-    <script src="script.js"></script>
-	
-	<script>
-	
-	// Sample data for posts
-const latestPosts = [
-    { title: "Discover the Mountains", link: "#" },
-    { title: "Relax by the Beach", link: "#" },
-    { title: "City Adventures", link: "#" }
-];
+    
 
-const popularPosts = [
-    { title: "Top 10 Travel Tips", link: "#" },
-    { title: "Best Destinations of 2025", link: "#" },
-    { title: "How to Pack Light", link: "#" }
-];
-
-// Populate Latest Posts
-const latestPostsContainer = document.getElementById('latest-posts');
-latestPosts.forEach(post => {
-    const li = document.createElement('li');
-    li.innerHTML = `<a href="${post.link}">${post.title}</a>`;
-    latestPostsContainer.appendChild(li);
-});
-
-// Populate Popular Posts
-const popularPostsContainer = document.getElementById('popular-posts');
-popularPosts.forEach(post => {
-    const li = document.createElement('li');
-    li.innerHTML = `<a href="${post.link}">${post.title}</a>`;
-    popularPostsContainer.appendChild(li);
-});
 
 // Toggle Navbar for Mobile
+<script>	
 const menuToggle = document.querySelector('.menu-toggle');
 const navLinks = document.querySelector('.nav-links');
-
 menuToggle.addEventListener('click', () => {
     navLinks.classList.toggle('show');
 });
