@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Website Template</title>
+    <link rel="stylesheet" href="style.css">
+	
+	
+	<style>
+	
+	/* Global Styles */
+body {
+    font-family: system-ui;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: #333;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Navigation Menu */
+#sticky-header { position:sticky; top:0px;
+}
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #007BFF;
+    padding: 10px 20px;
+    color: white;
+}
+
+.navbar .logo {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.navbar .nav-links {
+    display: flex;
+    gap: 20px;
+}
+
+.navbar .nav-links li {
+    display: inline;
+}
+
+.navbar .menu-toggle {
+    display: none;
+    font-size: 1.5em;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+/* Header */
+.header {
+    background: #f4f4f4;
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 2.5em;
+}
+
+.header p {
+    font-size: 1.2em;
+}
+
+/* Main Content */
+.main-container {
+    display: flex;
+	flex-direction: row-reverse;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+}
+
+.sidebar {
+    flex: 1 1 300px;
+    background: #f9f9f9;
+    padding: 20px;
+    border: 1px solid #ddd;
+}
+
+.content-area {
+    flex: 2 1 600px;
+    background: #fff;
+    padding: 20px;
+    border: 1px solid #ddd;
+}
+
+.sidebar h3, .content-area h2 {
+    margin-bottom: 10px;
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    padding: 15px;
+    background: #007BFF;
+    color: white;
+}
+
+/* Responsive Design */
+@media (min-width:769px) and (max-width:1080px) {
+.main-container {
+        flex-direction: column-reverse;;
+    }
+
+
+}
+@media (max-width: 768px) {
+    .navbar .nav-links {
+        display: none;
+        flex-direction: column;
+        background: #007BFF;
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        width: 150px;
+        padding: 10px;
+        border-radius: 5px;
+    }
+
+    .navbar .menu-toggle {
+        display: inline;
+    }
+
+    .navbar .nav-links.show {
+        display: flex;
+    }
+
+    .main-container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        order: 2;
+    }
+}
+</style>
+</head>
+<body>
+    <!-- Navigation Menu -->
+	<div id="sticky-header">
+    <nav class="navbar">
+        <div class="logo">MySite</div>
+        <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+        <button class="menu-toggle">☰</button>
+    </nav></div>
+
+    <!-- Header Section -->
+    <header class="header">
+        <h1>Welcome to My Website</h1>
+        <p>Your source for amazing content</p>
+    </header>
+
+    <!-- Main Content Area -->
+    <div class="main-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <section>
+                <h3>Latest Posts</h3>
+                <ul id="latest-posts">
+                    <!-- Populated by JavaScript -->
+                </ul>
+            </section>
+            <section>
+                <h3>Popular Posts</h3>
+                <ul id="popular-posts">
+                    <!-- Populated by JavaScript -->
+                </ul>
+            </section>
+        </aside>
+
+        <!-- Content Area -->
+        <main class="content-area">
+            <article>
+                <h2>Featured Content</h2>
+                <p>This is where the main content goes. Add articles, stories, or any other content here.</p>
+            </article>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2025 MySite. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+	
+	<script>
+	
+	// Sample data for posts
+const latestPosts = [
+    { title: "Discover the Mountains", link: "#" },
+    { title: "Relax by the Beach", link: "#" },
+    { title: "City Adventures", link: "#" }
+];
+
+const popularPosts = [
+    { title: "Top 10 Travel Tips", link: "#" },
+    { title: "Best Destinations of 2025", link: "#" },
+    { title: "How to Pack Light", link: "#" }
+];
+
+// Populate Latest Posts
+const latestPostsContainer = document.getElementById('latest-posts');
+latestPosts.forEach(post => {
+    const li = document.createElement('li');
+    li.innerHTML = `<a href="${post.link}">${post.title}</a>`;
+    latestPostsContainer.appendChild(li);
+});
+
+// Populate Popular Posts
+const popularPostsContainer = document.getElementById('popular-posts');
+popularPosts.forEach(post => {
+    const li = document.createElement('li');
+    li.innerHTML = `<a href="${post.link}">${post.title}</a>`;
+    popularPostsContainer.appendChild(li);
+});
+
+// Toggle Navbar for Mobile
+const menuToggle = document.querySelector('.menu-toggle');
+const navLinks = document.querySelector('.nav-links');
+
+menuToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('show');
+});
+</script>
+</body>
+</html>
